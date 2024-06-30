@@ -24,6 +24,17 @@ function Book(title,author,pages,read) {
   this.read = read;
 }
 
+Book.prototype.toggleRead = function () {
+  //two options are presented either read or not read and I believe this refers
+  //to the book.read options but i will run a test and find out for sure
+  this.read = !this.read;
+}
+
+function toggleRead(index) {
+  myLibrary[index].toggleRead();
+  create();
+}
+
 //function to create cards. Goes over myLibrary array and displays all books
 function create() {
     //attaches js variable to footer div for book elements
@@ -40,13 +51,14 @@ function create() {
         bookDiv.innerHTML = `
           <div class="card-header">
             <h3 class="title">${book.title}</h3>
-            <h5 class="author">${book.author}</h5>
+            <h5 class="author">by ${book.author}</h5>
           </div>
           <div class="card-body">
-              <p>${book.pages} pages</p>
-              <p class="read-status">${book.read ? "Read" : "Not Read Yet"}</p>
+            <p>${book.pages} pages</p>
+            <p class="read-status">${book.read ? "Read" : "Not Read"}</p>
+            <button class="removeBtn" onclick="removeBook(${i})">Remove Book</button>
+            <button class = "toggle-read-btn" onclick = "toggleRead(${i})">Toggle Read</button>
           </div>
-          <button class="removeBtn" onclick="removeBook(${i})">Remove Book</button>
         `;
         libraryDiv.appendChild(bookDiv);
     }
@@ -66,7 +78,10 @@ function addBookToLibrary() {
 }
 
 function removeBook(index){
+  //splice adds and/or removes elements - in this case removes 
+  // 1 item that has button clicked(index,1)
   myLibrary.splice(index,1);
+  //re-renders to display updated array minus removed book
   create();
 }
  

@@ -1,0 +1,35 @@
+/* *{
+    display: flex;
+    flex-direction: column;
+} */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#new-book-btn{
+    background-color: blue;
+    color: white;  
+}
+
+#new-book-form {
+    grid-column: 2/ span 1;
+
+}
+
+.main-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+}
+
+fieldset {
+    display: grid;
+}
+
+.library {
+    display: grid;
+    grid-template: 1fr 1fr 1fr/1fr 1fr 1fr 1fr;
+}
